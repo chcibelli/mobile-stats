@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="bootstrap-datatable.js"></script>
+</head>
+
+<body>
+<div id="example" class="container">
+    <header class="jumbotron subhead" id="overview">
+        <h1>AGEA - Mobile</h1>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="table-container_1">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+
+$("#table-container_1").datatable({
+    title: 'mobile apps usage stats'
+  , perPage: 100
+  , url: 'data.php'
+  , showPagination: false
+  , showFilter: false
+  , allowSaveColumns: false
+  , allowFilter: false
+  , columns: [
+        {
+            title: "App"
+          , sortable: true
+          , field: "app"
+          , callback: function ( data, cell ) {
+              return data[cell.field];
+            }
+          , filter: true
+        }
+      , {
+            title: "Plattform"
+          , sortable: true
+          , field: "plattform"
+        }
+      , {
+            title: "Total Downloads"
+          , sortable: true
+          , field: "downloads"
+          , filter: true
+          , css: {
+                textAlign: 'right'
+            }
+        }, {
+            title: "Total Updates"
+          , sortable: true
+          , field: "updates"
+          , filter: true
+          , css: {
+                textAlign: 'right'
+            }
+        }
+    ]
+});
+</script>
+</body>
+</html>
